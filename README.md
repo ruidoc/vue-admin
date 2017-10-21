@@ -1,6 +1,6 @@
 # vue
 
-> 基于vue2+iviw2的改进版demo
+> vue-admin create by ruidoc
 
 ## Build Setup
 
