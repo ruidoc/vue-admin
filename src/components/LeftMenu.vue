@@ -1,37 +1,60 @@
 <template>
     <div class="main">
-        <Menu active-name="1" theme="dark" width="auto">
-            <Menu-group title="用户管理">
-                <Menu-item name="1">
-                    <Icon type="document-text"></Icon>
-                    用户总览
-                </Menu-item>
-                <Menu-item name="2">
-                    <Icon type="chatbubbles"></Icon>
-                    评论管理
-                </Menu-item>
-            </Menu-group>
-            <Menu-group title="统计分析">
-                <Menu-item name="3">
-                    <Icon type="heart"></Icon>
-                    用户留存
-                </Menu-item>
-                <Menu-item name="4">
-                    <Icon type="heart-broken"></Icon>
-                    流失用户
+        <Menu active-name="0-0" theme="dark" width="auto" @on-select="route">
+            <Menu-group v-for="(menu,index) in menus" :title="menu.name" :key="index">
+                <Menu-item v-for="(item,ins) in menu.item" :key="ins" :name="index+'-'+ins">
+                    <Icon :type="item.icon"></Icon>
+                    {{item.name}}
                 </Menu-item>
             </Menu-group>
         </Menu>
     </div>
 </template>
 <script>
-    var data = {}
+    let data = {
+        menus: [
+            {
+                name: '主页',
+                item: [
+                    {
+                        icon: 'chatbubbles',
+                        name: '首页',
+                        to: '/'
+                    },
+                    {
+                        icon: 'document-text',
+                        name: '用户管理',
+                        to: '/users'
+                    }
+                ]
+            },
+            {
+                name: '其他',
+                item: [
+                    {
+                        icon: 'chatbubbles',
+                        name: '管理员',
+                        to: '/admins'
+                    }
+                ]
+            }
+        ],
+    }
     export default {
-        data(){
+        data() {
             return data
         },
-        method:{
-
+        methods: {
+            route(name) {
+                let ins = name.split('-');
+                let to = this.menus[ins[0]].item[ins[1]].to;
+                this.$router.push(to)
+            }
+        },
+        computed: {
+            active() {
+                
+            }
         }
     }
 </script>

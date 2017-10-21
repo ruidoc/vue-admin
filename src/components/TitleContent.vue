@@ -18,7 +18,7 @@
                 <Badge dot style="margin: 0 10px 0 50px">
                     <Icon type="ios-bell-outline" size="26"></Icon>
                 </Badge>
-                <Dropdown style="margin-left: 15px;">
+                <Dropdown style="margin-left: 15px;" @on-click="logout">
                     <a href="javascript:void(0)">
                         <img src="/static/img/ava1.png" width="40" style="vertical-align: middle">
                     </a>
@@ -44,7 +44,9 @@
             return data
         },
         methods: {
-            
+            logout() {
+                this.$store.commit('logout');
+            }
         },
         components: {
             

@@ -1,3 +1,51 @@
+<template>
+    <div class="layout">
+        <div v-if="login">
+            <div class="layout_title">
+                <title-content></title-content>
+            </div>
+            <div class="layout_left">
+                <left-menu></left-menu>
+            </div>
+            <div class="layout_content">
+                <router-view></router-view>
+            </div>
+        </div>
+        <div class="loginPage" v-if="!login">
+            <login></login>
+        </div>
+    </div>
+</template>
+<script>
+    import leftMenu from './components/leftMenu'
+    import TitleContent from './components/TitleContent'
+    import Login from './components/Login'
+
+    let data = {
+        
+    }
+
+    export default {
+        data() {
+            return data
+        },
+        components: {
+            leftMenu,
+            TitleContent,
+            Login
+        },
+        computed: {
+            login() {
+                let log = this.$store.state.admin;
+                if(log == null || log._id == null){
+                    return false
+                } else {
+                    return true
+                }
+            }
+        }
+    }
+</script>
 <style>
     html, body {
         width: 100%;
@@ -23,43 +71,10 @@
     .layout_content {
         position: absolute;
         left: 200px; bottom: 0; top: 60px; right: 0;
-        background: #f8f8f9;
+        background: #fff;
     }
-
+    .loginPage {
+        width: 100%;
+        height: 100%;
+    }
 </style>
-<template>
-    <div class="layout">
-        <div class="layout_title">
-            <title-content></title-content>
-        </div>
-        <div class="layout_left">
-            <left-menu></left-menu>
-        </div>
-        <div class="layout_content">
-            <main-content></main-content>
-        </div>
-    </div>
-</template>
-<script>
-    import leftMenu from './components/leftMenu'
-    import MainContent from './components/MainContent'
-    import TitleContent from './components/TitleContent'
-
-    let data = {
-        
-    }
-
-    export default {
-        data() {
-            return data
-        },
-        components: {
-            leftMenu,
-            MainContent,
-            TitleContent
-        },
-        methods: {
-            
-        }
-    }
-</script>

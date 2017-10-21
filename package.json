@@ -10,9 +10,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "iview": "^2.0.0-rc.15",
+    "axios": "^0.16.2",
+    "co": "^4.6.0",
+    "iview": "^2.0.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
+    "moment": "^2.18.1",
     "style-loader": "^0.18.2",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",

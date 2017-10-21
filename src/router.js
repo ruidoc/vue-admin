@@ -3,21 +3,24 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+import Users from './components/Users'
+import Admins from './components/Admin'
+
 const routes = [
     {
         path: '/',
         name: 'index'
     },
     {
-        path: '/students',
-        name: 'students',
-        // component: StudentList
+        path: '/users',
+        name: 'users',
+        component: Users
     },
 
     {
-        path: '/groups',
-        name: 'groups',
-        // component: GroupList
+        path: '/admins',
+        name: 'admins',
+        component: Admins
     }
 ]
 

@@ -5,17 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        status: {
-            role: 'students',
-            checked: false
-        },
-        pingData: []
+        admin: localStorage.getItem('admin') ? JSON.parse(localStorage.getItem('admin')) : {},
+        activeMenu: {
+            path: '',
+            name: ''
+        }
     },
     mutations: {
-        allAddScore(state,score) {
-            state.lists.forEach((item)=> {
-                item.score = parseInt(item.score)+parseInt(score)
-            })
+        login(state,admins) {
+            let adminInfo = JSON.stringify(admins);
+            localStorage.setItem('admin',adminInfo)
+            state.admin = admins
+        },
+        logout(state) {
+            localStorage.removeItem('admin')
+            state.admin = {}
         }
     }
 })
